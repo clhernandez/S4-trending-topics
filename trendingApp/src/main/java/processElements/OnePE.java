@@ -24,6 +24,8 @@ import org.apache.s4.core.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import eda.Tweet;
+
 
 public class OnePE extends ProcessingElement {
 	private static Logger logger = LoggerFactory.getLogger(OnePE.class);
@@ -42,9 +44,12 @@ public class OnePE extends ProcessingElement {
 		} catch (InterruptedException e) {
 			logger.error(e.toString());
 		}
-
+		
 		Event eventOutput = new Event();
-
+		
+		Tweet tweet = event.get("tweet",Tweet.class);
+		System.out.println(tweet.toString());
+		
 		eventOutput.put("levelTwoStream", Long.class, getEventCount()
 				% 100);
 		eventOutput.put("time", Long.class, event.get("time", Long.class));

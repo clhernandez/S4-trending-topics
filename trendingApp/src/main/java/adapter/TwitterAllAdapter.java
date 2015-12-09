@@ -57,7 +57,7 @@ public class TwitterAllAdapter extends AdapterApp implements Runnable {
 		Properties twitterProperties = new Properties();
 		/*File twitter4jPropsFile = new File(System.getProperty("user.home")
 				+ "/twitter4j.properties");*/
-		File twitter4jPropsFile = new File("../twitter4j.properties");
+		File twitter4jPropsFile = new File("/home/s4/S4-trending-topics/trendingApp/config/twitter4j.properties");
 		if (!twitter4jPropsFile.exists()) {
 			logger.error(
 					"Cannot find twitter4j.properties file in this location :[{}]",

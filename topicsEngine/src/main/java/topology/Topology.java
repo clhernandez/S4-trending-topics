@@ -49,7 +49,7 @@ public class Topology extends App {
 
 		// Create a stream that listens to the "inputStream" stream and passes
 		// events to the processPE instance.
-		createInputStream("inputStream", new KeyFinder<Event>() {
+		createInputStream("Tweetinput", new KeyFinder<Event>() {
 			@Override
 			public List<String> get(Event event) {
 				return Arrays.asList(new String[] { event

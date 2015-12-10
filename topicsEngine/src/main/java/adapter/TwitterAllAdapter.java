@@ -57,7 +57,7 @@ public class TwitterAllAdapter extends AdapterApp implements Runnable {
 		Properties twitterProperties = new Properties();
 		/*File twitter4jPropsFile = new File(System.getProperty("user.home")
 				+ "/twitter4j.properties");*/
-		File twitter4jPropsFile = new File("/home/s4/S4-trending-topics/trendingApp/config/twitter4j.properties");
+		File twitter4jPropsFile = new File("config/twitter4j.properties");
 		if (!twitter4jPropsFile.exists()) {
 			logger.error(
 					"Cannot find twitter4j.properties file in this location :[{}]",
@@ -168,8 +168,8 @@ public class TwitterAllAdapter extends AdapterApp implements Runnable {
 				// cantReplicas: Cantidad de PEs que se quieren generar para el proximo operador
 				// Nota: recuerden que la topología no necesariamente debía ser de este estilo
 				// también podía ser por un hash
-				int cantReplicas = 10;
-				event.put("levelTweet", Integer.class, eventCount % cantReplicas);
+				int cantReplicas = 1;
+				event.put("Tweetinput", Integer.class, eventCount % cantReplicas);
 
 				event.put("id", Integer.class, eventCount);
 				event.put("tweet", Tweet.class, tweet);

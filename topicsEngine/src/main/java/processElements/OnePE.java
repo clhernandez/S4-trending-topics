@@ -52,7 +52,8 @@ public class OnePE extends ProcessingElement {
 		
 		eventOutput.put("levelTwoStream", Long.class, getEventCount()
 				% 100);
-		eventOutput.put("time", Long.class, event.get("time", Long.class));
+		//eventOutput.put("time", Long.class, event.get("time", Long.class));
+		eventOutput.put("time", Long.class, Long.parseLong("100000"));//temporary fix, time wont come in event.
 
 		if (showEvent) {
 			logger.debug(eventOutput.getAttributesAsMap().toString());

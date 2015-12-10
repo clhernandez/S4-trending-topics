@@ -169,7 +169,7 @@ public class TwitterAllAdapter extends AdapterApp implements Runnable {
 				// Nota: recuerden que la topología no necesariamente debía ser de este estilo
 				// también podía ser por un hash
 				int cantReplicas = 1;
-				event.put("Tweetinput", Integer.class, eventCount % cantReplicas);
+				event.put("levelTweet", Integer.class, eventCount % cantReplicas);
 
 				event.put("id", Integer.class, eventCount);
 				event.put("tweet", Tweet.class, tweet);

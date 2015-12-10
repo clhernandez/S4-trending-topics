@@ -47,13 +47,13 @@ public class Topology extends App {
 		twoPE = createPE(TwoPE.class);
 		threePE = createPE(ThreePE.class);
 
-		// Create a stream that listens to the "inputStream" stream and passes
+		// Create a stream that listens to the "Tweetinput" stream and passes
 		// events to the processPE instance.
 		createInputStream("Tweetinput", new KeyFinder<Event>() {
 			@Override
 			public List<String> get(Event event) {
 				return Arrays.asList(new String[] { event
-						.get("levelOneStream") });
+						.get("levelTweet") });
 			}
 		}, onePE).setParallelism(8);
 

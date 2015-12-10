@@ -1,13 +1,13 @@
 #terminal 1 - crear nueva aplicacion
 	$ ./s4 newApp trendingApp -parentDir=../
 #iniciar el servidor zookeper
-	$ ./s4 zkServer -clusters=c=cluster1:flp=12000:nbTasks=2 -clean
+	$ ./s4 zkServer -clusters=c=cluster1:flp=12000:nbTasks=1 -clean
 
 #terminal 2 en carpeta app
 	$ ./s4 node -c=cluster1
 #terminal 3
-	$ ./s4 s4r -a=topology.Topology -b=`pwd`/build.gradle trendingApp
-	$ ./s4 deploy -s4r=`pwd`/build/libs/trendingApp.s4r -c=cluster1 -appName=trendingApp
+	$ ./s4 s4r -a=topology.Topology -b=`pwd`/build.gradle twitterTrending
+	$ ./s4 deploy -s4r=`pwd`/build/libs/twitterTrending.s4r -c=cluster1 -appName=twitterTrending
 	$ ./s4 node -c=cluster1
 
 #terminal 4

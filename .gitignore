@@ -1,12 +1,48 @@
-*.class
+.gradle
+build/
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+#Eclipse
+*target*
 *.jar
 *.war
 *.ear
+*.class
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# eclipse specific git ignore
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# ignore S4 engine
+apache-s4-0.6.0-incubating-src
+gradle-1.4
+topicsEngine/s4
+topicsEngine/build.gradle
+topicsEngine/lib
+topicsEngine/settings.gradle
+topicsEngine/gradlew
+topicsEngine/classpath.txt

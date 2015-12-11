@@ -48,7 +48,10 @@ public class OnePE extends ProcessingElement {
 		Event eventOutput = new Event();
 		
 		Tweet tweet = event.get("tweet",Tweet.class);
-		System.out.println(tweet.toString());
+		if(tweet.getText().contains("Hola")){
+			System.out.println(tweet.toString());
+		}
+		
 		
 		eventOutput.put("levelTwoStream", Long.class, getEventCount()
 				% 100);

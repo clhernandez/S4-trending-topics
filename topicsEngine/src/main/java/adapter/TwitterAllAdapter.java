@@ -24,7 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import eda.Tweet;
-
+import twitter4j.FilterQuery;
 import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
@@ -114,8 +114,14 @@ public class TwitterAllAdapter extends AdapterApp implements Runnable {
 			}
 
 		};
+		
+		//Filter language and track
+		FilterQuery tweetFilterQuery = new FilterQuery();
+		//tweetFilterQuery.track(new String[]{"palabra1,palabra2,palabra3"});
+		tweetFilterQuery.language(new String[]{"es"});
 
 		twitterStream.addListener(statusListener);
+		twitterStream.filter(tweetFilterQuery);
 		twitterStream.sample();
 
 	}

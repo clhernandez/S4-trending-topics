@@ -115,15 +115,18 @@ public class TwitterAllAdapter extends AdapterApp implements Runnable {
 
 		};
 		
-		//Filter language and track
+		
 		FilterQuery tweetFilterQuery = new FilterQuery();
-		//tweetFilterQuery.track(new String[]{"palabra1,palabra2,palabra3"});
+		//Filter language spanish
 		tweetFilterQuery.language(new String[]{"es"});
+		//double position[][] = {{-70.85495, -33.61927}, {-70.499268, -33.329457}};//Filter only santiago de chile
+		double position[][] = {{-76.376953, -54.984337}, {-69.153442, -18.177515}};//Filter only chile
+
+		tweetFilterQuery.locations(position);
 
 		twitterStream.addListener(statusListener);
 		twitterStream.filter(tweetFilterQuery);
-		twitterStream.sample();
-
+		
 	}
 
 	@Override

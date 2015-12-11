@@ -27,10 +27,11 @@ public class TwoPE extends ProcessingElement {
 		}
 
 		Event eventOutput = new Event();
-		System.out.println(event.get("text", String.class));
+		//System.out.println(event.get("text", String.class));
 		
 		eventOutput.put("levelThreeStream", Long.class, getEventCount()
 				% 100);
+		eventOutput.put("text2", String.class, event.get("text", String.class));
 		//eventOutput.put("time", Long.class, event.get("time", Long.class));
 
 		if (showEvent) {

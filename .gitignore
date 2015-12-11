@@ -39,6 +39,7 @@ gradle-app.setting
 
 # ignore S4 engine
 *~
+redis*
 apache-s4-0.6.0-incubating-src
 gradle-1.4
 topicsEngine/s4
@@ -48,3 +49,4 @@ topicsEngine/lib
 topicsEngine/settings.gradle
 topicsEngine/gradlew
 topicsEngine/classpath.txt
+topicsEngine/redis*

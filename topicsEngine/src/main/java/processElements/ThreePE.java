@@ -25,10 +25,10 @@ public class ThreePE extends ProcessingElement {
 			logger.debug(event.getAttributesAsMap().toString());
 		}
 
-		long timeInit = event.get("time", Long.class);
+		//long timeInit = event.get("time", Long.class);
 		long timeFinal = System.currentTimeMillis();
 
-		long time = timeFinal - timeInit;
+		//long time = timeFinal - timeInit;
 	}
 
 	@Override

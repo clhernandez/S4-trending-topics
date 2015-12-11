@@ -49,15 +49,13 @@ public class OnePE extends ProcessingElement {
 		
 		Tweet tweet = event.get("tweet",Tweet.class);
 		//if(tweet.getText().contains("Hola")){
-			System.out.println(tweet.toString());
+			//System.out.println(tweet.toString());
 		//}
 		
 		
-		eventOutput.put("levelTwoStream", Long.class, getEventCount()
-				% 100);
-		//eventOutput.put("time", Long.class, event.get("time", Long.class));
-		eventOutput.put("time", Long.class, Long.parseLong("100000"));//temporary fix, time wont come in event.
-
+		eventOutput.put("levelTwoStream", Long.class, getEventCount() % 100);
+		eventOutput.put("text", String.class, tweet.getText());
+		
 		if (showEvent) {
 			logger.debug(eventOutput.getAttributesAsMap().toString());
 		}

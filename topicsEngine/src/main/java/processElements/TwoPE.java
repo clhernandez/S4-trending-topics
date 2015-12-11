@@ -29,9 +29,18 @@ public class TwoPE extends ProcessingElement {
 		Event eventOutput = new Event();
 		//System.out.println(event.get("text", String.class));
 		
-		eventOutput.put("levelThreeStream", Long.class, getEventCount()
-				% 100);
-		eventOutput.put("text2", String.class, event.get("text", String.class));
+		eventOutput.put("levelThreeStream", Long.class, getEventCount()	% 50);
+		
+		try {
+			String[] inputText = event.get("text", String.class).split(" ");
+			for (int i = 0; i < inputText.length; i++) {
+				eventOutput.put("word", String.class, inputText[i]);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Eror al parsear la frase: "+ event.get("text", String.class));
+		}
+		
 		//eventOutput.put("time", Long.class, event.get("time", Long.class));
 
 		if (showEvent) {

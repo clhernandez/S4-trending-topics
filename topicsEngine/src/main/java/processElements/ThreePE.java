@@ -27,8 +27,7 @@ public class ThreePE extends ProcessingElement {
 
 		//long timeInit = event.get("time", Long.class);
 		long timeFinal = System.currentTimeMillis();
-		System.out.print("PE3: ");
-		System.out.println(event.get("text2", String.class));
+		System.out.println(event.get("word", String.class));
 		//long time = timeFinal - timeInit;
 	}
 

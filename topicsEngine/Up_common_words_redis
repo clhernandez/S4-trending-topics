@@ -1,0 +1,12 @@
+//Para crear la lista de palabras recurrentes que no ser{an consideradas se deben ejecutar los siguientes pasos
+
+//Iniciar server redis
+src/redis-server &
+
+//Iniciar cliente redis
+src/redis-cli
+
+//Ejecutar el siguiente comando
+lpush 	deletew 	"♥" 	"¡" 	"!" 	"?" 	"¿" 	" a " 	" ante " 	" bajo " 	" cabe " 	" con " 	" contra " 	" de " 	" desde " 	" en " 	" entre " 	" hacia " 	" hasta " 	" para " 	" por " 	" segun " 	" sin " 	" so " 	" sobre " 	" tras " 	" el " 	" la " 	" los " 	" las " 	" un " 	" una " 	" unos " 	" unas " 	" uno " 	" dos " 	" tres " 	" cuatro " 	" cinco " 	" seis " 	" siete " 	" ocho " 	" nueve " 	" cero " 	" tambien " 	" y " 	" pero " 	" si " 	" bien " 	" ahora " 	" bien " 	" por " 	" lo " 	" cual " 	" asi " 	" vaya " 	" alla " 	" ahi " 	" bien " 	" que " 	" con " 	" wea " 	" weon " 	" weona " 	" wn " 	" wns " 	" pico " 	" conchesumadre " 	" ctm " 	" culiao " 	" culia " 	" huevon " 	" hueon " 	" choro " 	" ql " 	" es " 	" que " 	" no " 	" te " 	" fue " 	" ese " 	" me " 
+
+

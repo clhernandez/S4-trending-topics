@@ -23,14 +23,18 @@ import org.apache.s4.core.ProcessingElement;
 import org.apache.s4.core.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import db.SingleRedis;
 import eda.Tweet;
-
+import redis.clients.jedis.Jedis;
+import java.util.ArrayList; 
 
 public class OnePE extends ProcessingElement {
 	private static Logger logger = LoggerFactory.getLogger(OnePE.class);
 	private boolean showEvent = false;
-
+	int cont = 0;
+	String word;
+	String toreplace;
+	
 	Stream<Event> downStream;
 
 	public void setDownStream(Stream<Event> stream) {
@@ -48,13 +52,24 @@ public class OnePE extends ProcessingElement {
 		Event eventOutput = new Event();
 		
 		Tweet tweet = event.get("tweet",Tweet.class);
-		//if(tweet.getText().contains("Hola")){
-			//System.out.println(tweet.toString());
-		//}
+
+		toreplace = tweet.getText();
+		Jedis jedis = new Jedis("localhost");
 		
+		while(cont != jedis.llen("deletew")){	
+			word = "" + jedis.lrange("deletew",cont, cont);
+			word = word.replace("[", "");
+			word = word.replace("]", "");
+			toreplace = toreplace.replace(word, " ");
+			cont++;
+		}
+		cont=0;
+
+		//System.out.println(tweet.getText());
+		//System.out.println(toreplace);
 		
 		eventOutput.put("levelTwoStream", Long.class, getEventCount() % 100);
-		eventOutput.put("text", String.class, tweet.getText());
+		eventOutput.put("text", String.class, toreplace);
 		
 		if (showEvent) {
 			logger.debug(eventOutput.getAttributesAsMap().toString());

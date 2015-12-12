@@ -50,3 +50,7 @@ topicsEngine/settings.gradle
 topicsEngine/gradlew
 topicsEngine/classpath.txt
 topicsEngine/redis*
+
+#ignore express
+build/Release
+monitor/node_modules/

@@ -91,8 +91,8 @@ Trabajo realizado en base al repositorio de:
 
 	https://github.com/dwladdimiroc/s4-class1
 
-Funcionamiento:
-
+Funcionamiento
+---
 El desarrollo en S4 posee 3 PE:
 - OnePE: toma el string del texto del Tweet y elimina en él palabras que se encuentran en una lista redis llamada "deletew" 
 - TwoPE: recibe el stream previamente modificado por OnePE y lo secciona en partes tomando como referencia los espacios en blanco
@@ -104,10 +104,10 @@ Para cargar el filtro de palabras mencionado en OnePE debe ejecutar los siguient
 	Ingresar al directorio de Redis
 	$ cd S4-trending-topics/redis-3.0.5/
 
-	Ejecutar el servidor REDIs
+	Ejecutar el servidor Redis
 	$ src/redis-server &
 
-	Ejecutar el cliente redis
+	Ejecutar el cliente Redis
 	$ src/redis-cli
 
 	Copiar el comando lpush deletew ... que aparece en el archivo Up_common_words_redis ubicado en la carpeta topicsengine
@@ -120,3 +120,21 @@ Para ver el contenido de los repositorios de redis debe ejecutar los siguientes 
 	Para ver el respositorio de trendic topics (mencionado en ThreePE):
 	$ hgetall words
 
+Monitor
+---
+El programa incluye un monitor de trendic topics basado en nodejs, para ejecutarlo deberá ejecutar los siguientes comandos:
+
+	Ingresar al directorio Monitor ubicado en la raíz
+	$ cd monitor
+	
+	Instalar las dependencias de nodejs
+	$ npm install
+
+	Ejecutar el monitor
+	$ npm start
+
+	Ingresar desde un navegador web a la IP del servidor donde se ejecuta node con el puerto 3000, ejemplo:	
+	$ http://192.168.1.1:3000
+
+Nota:
+Previo a la ejecución de estos pasos deberá crear una aplicación twitter y copiar sus tokens en el archivo ubicado en /topicsengine/config/twitter4j.properties, mas información en https://dev.twitter.com/

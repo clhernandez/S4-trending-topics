@@ -4,20 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
-	req.cache.hgetall("words", function(err,result){
-		if(err == null && result!=null){
-			var hashmap = result;
-			var list = [];
-
-			for (var m in hashmap){
-				list.push(m.replace(":","").replace("\"","").replace(".","")+"_"+hashmap[m]);
-			}
-
-			res.render('index', { title: 'Express', result: list});
-
-		}
-	});
+	res.render('index');
 });
 
 router.get('/getResults', function(req, res, next){
@@ -27,7 +14,7 @@ router.get('/getResults', function(req, res, next){
 			var list = [];
 
 			for (var m in hashmap){
-				list.push(m.replace(":","").replace("\"","")+"_"+hashmap[m]);
+				list.push(m+"_"+hashmap[m]);
 			}
 
 			res.send(list);

@@ -16,13 +16,13 @@
 <script type="text/javascript" src="/javascripts/jquery.tablesorter.js"></script>
 <script>
 	
-	var topics = " {{result}} ";
+	
 	
 	
 	
 	$(document).ready(function(){ 
         
-        updateTable(topics);
+        updateTopics();
         //setInterval(updateTopics, 2000, false);
     }); 
 
@@ -32,7 +32,8 @@
     	$("#tableBody").empty();
 
     	$.get("/getResults", function(data){
-    		updateTable(topics);
+    		console.log(data);
+    		updateTable(data);
     	});
     }
 
@@ -41,7 +42,7 @@
 
     	var tableBody = document.getElementById("tableBody");   	
 
-    	topics = topics.split(",");
+    	//topics = topics.split(",");
 		
 
 		for(var i in topics){

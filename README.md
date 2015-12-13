@@ -90,3 +90,33 @@ Si se desea utilizar las métricas por defecto de S4, se debe utilizar como par�
 Trabajo realizado en base al repositorio de:
 
 	https://github.com/dwladdimiroc/s4-class1
+
+Funcionamiento:
+
+El desarrollo en S4 posee 3 PE:
+- OnePE: toma el string del texto del Tweet y elimina en él palabras que se encuentran en una lista redis llamada "deletew" 
+- TwoPE: recibe el stream previamente modificado por OnePE y lo secciona en partes tomando como referencia los espacios en blanco
+- ThreePE: carga las palabras previamente seccionadas a un hashmap de redis llamado words
+
+
+Para cargar el filtro de palabras mencionado en OnePE debe ejecutar los siguientes comandos:
+
+	Ingresar al directorio de Redis
+	$ cd S4-trending-topics/redis-3.0.5/
+
+	Ejecutar el servidor REDIs
+	$ src/redis-server &
+
+	Ejecutar el cliente redis
+	$ src/redis-cli
+
+	Copiar el comando lpush deletew ... que aparece en el archivo Up_common_words_redis ubicado en la carpeta topicsengine
+
+Para ver el contenido de los repositorios de redis debe ejecutar los siguientes comandos:
+
+	Para ver el respositorio de palabras comunes (mencionado en OnePE):
+	$ lrange deletew 0 -1
+
+	Para ver el respositorio de trendic topics (mencionado en ThreePE):
+	$ hgetall words
+

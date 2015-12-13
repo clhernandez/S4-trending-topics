@@ -87,4 +87,6 @@ Si se desea utilizar las m√©tricas por defecto de S4, se debe utilizar como par√
 
 	$ -p=s4.metrics.config=csv:/path/to/directory:TIME:TIMEUNIT
 
-	
+Trabajo realizado en base al repositorio de:
+
+	https://github.com/dwladdimiroc/s4-class1

@@ -29,12 +29,14 @@ public class TwoPE extends ProcessingElement {
 		Event eventOutput = new Event();
 		//System.out.println(event.get("text", String.class));
 		
-		eventOutput.put("levelThreeStream", Long.class, getEventCount()	% 50);
+		eventOutput.put("levelThreeStream", Long.class, getEventCount()	% 100);
 		
 		try {
-			String[] inputText = event.get("text", String.class).split(" ");
+			String[] inputText = event.get("text", String.class).replace("_", " ").split(" ");
 			for (int i = 0; i < inputText.length; i++) {
-				eventOutput.put("word", String.class, inputText[i]);
+				if(inputText[i]!=null && inputText[i].length() > 0){
+					eventOutput.put("word", String.class, inputText[i]);
+				}
 			}
 			
 		} catch (Exception e) {

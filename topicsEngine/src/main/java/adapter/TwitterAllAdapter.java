@@ -177,7 +177,7 @@ public class TwitterAllAdapter extends AdapterApp implements Runnable {
 				// cantReplicas: Cantidad de PEs que se quieren generar para el proximo operador
 				// Nota: recuerden que la topología no necesariamente debía ser de este estilo
 				// también podía ser por un hash
-				int cantReplicas = 1;
+				int cantReplicas = 100;
 				event.put("levelTweet", Integer.class, eventCount % cantReplicas);
 
 				event.put("id", Integer.class, eventCount);

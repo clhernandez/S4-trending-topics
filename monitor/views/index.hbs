@@ -1,3 +1,71 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-{{result}}
+<h1>LAB 2 - SDE</h1>
+<p>Trending Topics</p>
+
+<table  id="myTable" class="tablesorter">
+<thead>
+	<tr>
+		<th>Topic</th>
+		<th>Counts</th>
+	</tr>
+</thead>
+<tbody id="tableBody">
+</tbody>
+</table>
+
+<script type="text/javascript" src="/javascripts/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tablesorter.js"></script>
+<script>
+	
+	var topics = " {{result}} ";
+	
+	
+	
+	$(document).ready(function(){ 
+        
+        updateTable(topics);
+        //setInterval(updateTopics, 2000, false);
+    }); 
+
+    
+
+    function updateTopics(){
+    	$("#tableBody").empty();
+
+    	$.get("/getResults", function(data){
+    		updateTable(topics);
+    	});
+    }
+
+    function updateTable(topics){
+    	var table = document.getElementById("myTable");
+
+    	var tableBody = document.getElementById("tableBody");   	
+
+    	topics = topics.split(",");
+		
+
+		for(var i in topics){
+			var splitTopic = topics[i].split("_");
+			if(splitTopic[0]!=undefined && splitTopic[1]!=undefined){
+				var tr = document.createElement("tr");
+					var td1 = document.createElement("td");
+					td1.innerHTML = splitTopic[0];
+				tr.appendChild(td1);
+					var td2 = document.createElement("td");
+					td2.innerHTML = splitTopic[1].trim();
+				tr.appendChild(td2);
+
+				tableBody.appendChild(tr);
+			}
+		}
+		table.appendChild(tableBody);
+
+		$("#myTable").tablesorter({ 
+        	// sort on the first column and third column, order asc 
+        	sortList: [[1,1]] 
+    	});
+
+    }
+
+</script>
+

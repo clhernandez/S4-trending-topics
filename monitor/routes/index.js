@@ -10,10 +10,8 @@ router.get('/', function(req, res, next) {
 			var hashmap = result;
 			var list = [];
 
-			console.log(hashmap);
 			for (var m in hashmap){
-				console.log(m);
-				list.push(m+"_"+hashmap.m);
+				list.push(m.replace(":","").replace("\"","").replace(".","")+"_"+hashmap[m]);
 			}
 
 			res.render('index', { title: 'Express', result: list});
@@ -21,10 +19,21 @@ router.get('/', function(req, res, next) {
 		}
 	});
 });
-function printe(result){
-	for (var i = 0; i < result.length; i +1) {
-     console.log(result[i])
-    }
-    return true;
-}
+
+router.get('/getResults', function(req, res, next){
+	req.cache.hgetall("words", function(err,result){
+		if(err == null && result!=null){
+			var hashmap = result;
+			var list = [];
+
+			for (var m in hashmap){
+				list.push(m.replace(":","").replace("\"","")+"_"+hashmap[m]);
+			}
+
+			res.send(list);
+		}
+	});
+
+});
+
 module.exports = router;
